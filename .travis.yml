@@ -4,7 +4,7 @@ rvm:
   - 2.4.2
 
 script:
-  - rspec
+  - bundle exec rspec spec
 
 before_script:
   - cp config/database.travis.yml config/database.yml
