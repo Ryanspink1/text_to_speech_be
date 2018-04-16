@@ -12,5 +12,5 @@ before_script:
 
 services:
   - postgresql
-  
+
 cache: bundler
