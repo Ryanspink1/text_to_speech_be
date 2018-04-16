@@ -1,0 +1,16 @@
+language: ruby
+
+rvm:
+  - 2.4.2
+
+script:
+  - bundle exec rspec spec
+
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - psql -c 'create database text_to_speech_be_test;' -U postgres
+
+services:
+  - postgresql
+
+cache: bundler
