@@ -56,4 +56,5 @@ group :test do
   gem 'fabrication'
   gem 'vcr'
   gem 'webmock'
+  gem 'faker'
 end
