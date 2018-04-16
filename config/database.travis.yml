@@ -1,0 +1,3 @@
+test:
+  adapter: postgresql
+  database: text_to_speech_be_test
