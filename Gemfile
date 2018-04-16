@@ -28,7 +28,8 @@ gem 'awesome_print'
 gem 'pry'
 gem 'figaro'
 gem 'faraday'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+gem 'knock'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
