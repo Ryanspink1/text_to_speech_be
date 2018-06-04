@@ -19,7 +19,7 @@ class Api::V1::UsersController < ApplicationController
     if @user.save
       render json: @user, status: :created
     else
-      render json: @user.errors, status: :bad_request
+      render json: @user.errors
     end
   end
 

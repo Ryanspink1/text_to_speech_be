@@ -16,8 +16,9 @@ ActiveRecord::Schema.define(version: 20180416042723) do
   enable_extension "plpgsql"
 
   create_table "conversions", force: :cascade do |t|
-    t.string "original_text"
-    t.text "synthesized_mime"
+    t.string "voice"
+    t.string "text"
+    t.string "aws_location"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
