@@ -25,7 +25,7 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update(user_params)
+    if @user.update(email: user_params[:email])
       render json: @user, status: :ok
     else
       render json: @user.errors
