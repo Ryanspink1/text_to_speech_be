@@ -5,7 +5,7 @@ class Api::V1::UsersController < ApplicationController
     if @user = User.find(params[:id])
       render json: @user
     else
-      render json: @user.errors, status: :bad_request
+      render json: @user.errors0
     end
   end
 
@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      render json: @user, status: :created
+      render json: @user1
     else
       render json: @user.errors
     end
@@ -26,13 +26,13 @@ class Api::V1::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(email: user_params[:email])
-      render json: @user, status: :ok
+      render json: @user
     else
       render json: @user.errors
     end
   end
 
-  private
+private
 
   def user_params
     params.permit(:email, :password, :password_digest)

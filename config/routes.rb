@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         resources :conversions, only: [:create]
       end
       resources :conversions, only: [:index, :destroy]
+      resources :speech_conversions, only: [:create, :index, :destroy]
       namespace :guest do
         resources :conversions, only: [:index]
       end
