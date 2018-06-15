@@ -2,8 +2,8 @@ class Api::V1::ConversionsController < ApplicationController
   before_action :authenticate_user, only: [:index, :create, :destroy]
 
   def index
-    @user = current_user
-    render json: @user.conversions
+    @conversions = current_user.conversions
+    render json: @conversions
   end
 
   def create
@@ -13,22 +13,22 @@ class Api::V1::ConversionsController < ApplicationController
                                                   aws_location: "https://s3-us-west-2.amazonaws.com/rs-text-to-speech/#{current_user.id}_#{encoded_phrase}.mp3")
     if @conversion.save
       AwsService.upload(encoded_phrase, current_user)
-      render json: [@conversion], status: :created
+      render json: [@conversion]
     else
-      render json: @conversion.errors, status: :bad_request
+      render json: @conversion.errors
     end
   end
 
   def destroy
-    @conversion = current_user.conversions.find_by(id: conversion_params[:id])
+    @conversion = current_user.conversions.find(conversion_params[:id])
     if @conversion.delete
-      render status: 200
+      render status: :ok
     else
-      render json: @conversion.errors, status: :bad_request
+      render json: @conversion.errors
     end
   end
 
-  private
+private
 
   def conversion_params
     params.permit(:voice, :text, :id)
