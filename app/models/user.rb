@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   validates :email,
 
-            presence: true
+            presence: true,
+            'valid_email_2/email': true
 
   validates :email,
 
