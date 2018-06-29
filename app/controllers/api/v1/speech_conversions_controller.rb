@@ -14,9 +14,9 @@ class Api::V1::SpeechConversionsController < ApplicationController
                                                              aws_location: "https://s3-us-west-2.amazonaws.com/rs-text-to-speech/#{current_user.id}_#{count}.webm")
     if @speech_conversion.save
       AmazonService.upload(current_user, count, params[:audio])
-      render json: @speech_conversion status: :created
+      render json: @speech_conversion, status: :created
     else
-      render json: @speech_conversion.errors status: :bad_request
+      render json: @speech_conversion.errors, status: :bad_request
     end
   end
 
@@ -25,7 +25,7 @@ class Api::V1::SpeechConversionsController < ApplicationController
     if @speech_conversion.delete
       render status: :no_content
     else
-      render json: @speech_conversion.errors status: :bad_request
+      render json: @speech_conversion.errors, status: :bad_request
     end
   end
 private

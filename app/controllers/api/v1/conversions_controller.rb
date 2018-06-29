@@ -13,7 +13,7 @@ class Api::V1::ConversionsController < ApplicationController
                                                   aws_location: "https://s3-us-west-2.amazonaws.com/rs-text-to-speech/#{current_user.id}_#{encoded_phrase}.mp3")
     if @conversion.save
       AwsService.upload(encoded_phrase, current_user)
-      render json: [@conversion], status: :no_content
+      render json: [@conversion], status: :created
     else
       render json: @conversion.errors, status: :bad_request
     end
@@ -22,7 +22,7 @@ class Api::V1::ConversionsController < ApplicationController
   def destroy
     @conversion = current_user.conversions.find(conversion_params[:id])
     if @conversion.delete
-      render status: :ok
+      render status: :no_content
     else
       render json: @conversion.errors, status: :bad_request
     end
