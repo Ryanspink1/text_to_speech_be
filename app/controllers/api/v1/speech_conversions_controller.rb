@@ -25,7 +25,7 @@ class Api::V1::SpeechConversionsController < ApplicationController
     if @speech_conversion.delete
       render status: :no_content
     else
-      render json: @speech_conversion.errors, status: :bad_request
+      render json: @speech_conversion.errors, status: :bad_request 
     end
   end
 private
