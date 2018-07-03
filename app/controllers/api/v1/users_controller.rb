@@ -19,7 +19,7 @@ class Api::V1::UsersController < ApplicationController
     if @user.save
       render json: @user
     else
-      render json: @user.errors , status: :bad_request
+      render json: @user.errors, status: :bad_request
     end
   end
 
@@ -28,7 +28,7 @@ class Api::V1::UsersController < ApplicationController
     if @user.update(email: user_params[:email])
       render json: @user
     else
-      render json: @user.errors
+      render json: @user.errors, status: :bad_request
     end
   end
 
